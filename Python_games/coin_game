@@ -1,0 +1,31 @@
+import random
+def coin_game(num):
+    points = 10
+    num_bets = 0
+    while points > 0:
+        bet = int(input ("How many points would you like to bet?"))
+        if (bet < 0)or (bet > points):
+            print ("Invalid Bet")
+        else:
+            guess = input("Will the coin flip Heads or Tails?")
+            if (guess != "H") or (guess != "T"):
+                print ("Invalid Guess")
+            else:
+                flip = coinflip()
+                if (flip == guess):
+                    print ("You were right! The coin flipped " + flip)
+                    points = points + bet
+                else:
+                    print("You were right!")
+            prediction = input("Heads or Tails")
+        result = coin_game() #The result of the player betting on either heads or tails
+        if (prediction == result):
+            print ("You were right, the coin flipped" + result)
+            points = points + bet #If the player was right then add 1 to guesses
+        else:
+            points = points + bet #gains points
+            print ("You were wrong, the coin flipped" + result)
+            points = points - bet #loses points
+            break
+        if points == 0 or bet == 0: #ends the game if either point or bets equal 0
+            print(" You ended up with " + str(points) + " points")
